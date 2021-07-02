@@ -18,7 +18,7 @@ app.layout = html.Div(
             id="upload-image",
             children=html.Div(["Drag and Drop or ", html.A("Select Files")]),
             style={
-                "width": "100%",
+                "width": "80%",
                 "height": "60px",
                 "lineHeight": "60px",
                 "borderWidth": "1px",
@@ -38,20 +38,20 @@ app.layout = html.Div(
 @app.callback(
     Output("output-prediction", "children"), Input("upload-image", "contents")
 )
-def prediction(content):
+def make_prediction(content):
     if content is not None:
         final_img = image_processing(
             content=content,
             temp_path=os.path.abspath("app/temp/image.jpg"),
         )
-        y = model.predict(final_img)
-        return np.argmax(y)
+        prediction = np.argmax(model.predict(final_img))
+        return prediction
 
 
 @app.callback(Output("output-image", "children"), Input("upload-image", "contents"))
-def update_output(image):
-    if image is not None:
-        child = html.Img(src=image)
+def display_image(content):
+    if content is not None:
+        child = html.Img(src=content)
         return child
 
 

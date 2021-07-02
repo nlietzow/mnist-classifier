@@ -6,6 +6,17 @@ import os
 
 
 def image_processing(content, temp_path):
+    """ "
+    Takes in an uploaded image and saves it temporarly in the working directory.
+    The image is then processed to an numpy array and scaled for the tensorflow model.
+
+    Parameters:
+        content:
+        temp_path:
+
+    Returns:
+        final_image:
+    """
 
     data = content.encode("utf8").split(b";base64,")[1]
     with open(temp_path, "wb") as fp:
