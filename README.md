@@ -29,7 +29,7 @@ In the file mnist_samples.zip there are some image samples for the classifier to
    ```
 2. Run the application in a container
    ```sh
-   docker run -p 8000:8000 mnist-classifier
+   docker run -p 8000:8000 niclaslietzow/mnist-classifier
    ```
 
 
